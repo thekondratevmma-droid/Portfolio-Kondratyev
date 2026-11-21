@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Кейс цифрового двойника МГУ и Университета Сямэня с интерактивной 3D-навигацией по кампусам.">
+  <meta name="theme-color" content="#0c0c0c">
+  <title data-en="MSU and Xiamen University Digital Twin — Andrey Kondratyev">Цифровой двойник МГУ и Университета Сямэня — Андрей Кондратьев</title>
+  <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../case-study.css">
+  <script src="../../app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#case-main" data-en="Skip to content">К содержанию</a>
+
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M11.62 3.41c.46-.07.76.45.48.82a5.84 5.84 0 0 0 7.72 8.51c.4-.24.89.1.79.55A8.78 8.78 0 1 1 11.62 3.41Z"/>
+      <path d="M17.6 4.4c.18 1.35 1.25 2.42 2.6 2.6-1.35.18-2.42 1.25-2.6 2.6-.18-1.35-1.25-2.42-2.6-2.6 1.35-.18 2.42-1.25 2.6-2.6Z"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4.65" fill="currentColor"/>
+      <path d="M12 2.25v2.1m0 15.3v2.1M2.25 12h2.1m15.3 0h2.1M5.1 5.1l1.5 1.5m10.8 10.8 1.5 1.5M5.1 18.9l1.5-1.5M17.4 6.6l1.5-1.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M20.9 3.8 2.4 11c-.9.4-.9 1.2-.2 1.4l4.7 1.5 1.8 5.5c.2.6.4.8.8.8.5 0 .7-.2 1-.5l2.6-2.5 5.2 3.8c.9.5 1.5.2 1.7-.9l3-14.8c.3-1.3-.5-1.9-2.1-1.5ZM8 13.5l10.6-6.6c.5-.3.9-.1.6.2l-8.8 8-.3 3.2L8 13.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm.7 3.1L12 13l8.3-5.9-1-1.4L12 10.9 4.7 5.7l-1 1.4Z" fill="currentColor" fill-rule="evenodd"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-max" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 1.6.4 3.1 1 4.4L2 22l5.6-1a10 10 0 1 0 4.4-19Zm0 5a5 5 0 1 1 0 10c-1 0-1.8-.2-2.5-.7L7 17l.7-2.5A5 5 0 0 1 12 7Z" fill="currentColor" fill-rule="evenodd"/></symbol>
+  </svg>
+
+  <header class="nav-shell content-width">
+    <a class="wordmark" href="../../" aria-label="Андрей Кондратьев" data-en-label="Andrey Kondratyev">
+      <img class="wordmark-mark" src="../../assets/wordmark-rhombus.svg" alt="" width="40" height="40">
+      <img class="wordmark-name wordmark-name--ru" src="../../assets/wordmark-ru.svg" alt="" width="12807" height="1040">
+      <img class="wordmark-name wordmark-name--en" src="../../assets/wordmark-en.svg" alt="" width="13374" height="1040">
+    </a>
+    <nav class="desktop-nav" aria-label="Разделы сайта" data-en-label="Site sections">
+      <a href="../../#cases" data-en="Work">Кейсы</a>
+      <a href="../../#experience" data-en="Experience">Опыт</a>
+      <a href="#contacts" data-en="Contact">Контакты</a>
+    </nav>
+    <div class="nav-controls">
+      <button class="theme-switch" type="button" aria-label="Светлая тема" aria-pressed="false">
+        <span class="theme-switch__thumb" aria-hidden="true">
+          <svg class="icon moon"><use href="#i-moon"></use></svg>
+          <svg class="icon sun"><use href="#i-sun"></use></svg>
+        </span>
+      </button>
+      <button class="control language-switch" type="button" aria-label="Switch to English">RU</button>
+      <button class="control menu-switch" type="button" aria-label="Меню" data-en-label="Menu" aria-controls="mobile-navigation" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path class="menu-switch__line--top" d="M5 7h14"/>
+          <path class="menu-switch__line--middle" d="M5 12h14"/>
+          <path class="menu-switch__line--bottom" d="M5 17h14"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Разделы сайта" data-en-label="Site sections" hidden>
+      <a href="../../#cases" data-en="Work">Кейсы</a>
+      <a href="../../#experience" data-en="Experience">Опыт</a>
+      <a href="#contacts" data-en="Contact">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="case-study" id="case-main">
+    <section class="study-intro content-width" aria-labelledby="study-title">
+      <a class="study-back" href="../../">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6M9 12h11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Back to home">Вернуться на главную</span>
+      </a>
+      <h1 id="study-title" data-en="INTERACTIVE PROJECT FOR MSU AND XIAMEN UNIVERSITY">ИНТЕРАКТИВНЫЙ ПРОЕКТ МГУ И УНИВЕРСИТЕТА СЯМЭНЯ</h1>
+      <figure class="study-cover">
+        <img src="../../assets/campuses.webp" width="1500" height="757"
+             alt="Цифровой двойник кампусов МГУ и Университета Сямэня на интерактивном экране"
+             data-en-alt="MSU and Xiamen University campus digital twin on an interactive display" fetchpriority="high">
+        <ul class="tags study-cover-tags">
+          <li data-en="B2G">B2G</li><li data-en="Digital twin">Цифровой двойник</li><li data-en="UX architecture">UX Архитектура</li><li data-en="Touch Interface">Touch Interface</li>
+        </ul>
+      </figure>
+      <dl class="study-meta">
+        <div><dt data-en="Role">Роль</dt><dd data-en="UX/UI Designer">UX/UI Designer</dd></div>
+        <div><dt data-en="Platform">Платформа</dt><dd data-en="Touch Table">Touch Table</dd></div>
+        <div><dt data-en="Engine">Движок</dt><dd data-en="Unreal Engine 5">Unreal Engine 5</dd></div>
+        <div><dt data-en="Segment">Сегмент</dt><dd data-en="EdTech / B2G">EdTech / B2G</dd></div>
+        <div><dt data-en="Timeline">Сроки</dt><dd data-en="2 months">2 месяца</dd></div>
+      </dl>
+    </section>
+
+    <section class="study-section study-overview content-width" aria-labelledby="study-overview">
+      <div class="study-overview__row" data-reveal>
+        <h2 id="study-overview" data-en="ABOUT THE PROJECT">О ПРОЕКТЕ</h2>
+        <p data-en="An interactive 3D environment built in Unreal Engine 5 that brings the digital twins of MSU and Xiamen University together. Users explore campuses, faculties, academic programs, and projects through a touch interface.">Интерактивное 3D-пространство на Unreal Engine 5, объединяющее цифровые двойники МГУ и Университета Сямэня. Пользователь исследует кампусы, факультеты, образовательные программы и проекты через touch-интерфейс.</p>
+      </div>
+      <div class="study-overview__row" data-reveal>
+        <h3 data-en="PROBLEM">ПРОБЛЕМА</h3>
+        <p data-en="Users need to understand a complex educational space quickly and move confidently between universities, sections, and objects without training or instructions.">Пользователь должен быстро понять структуру сложного образовательного пространства и уверенно перемещаться между университетами, разделами и объектами без обучения и инструкций.</p>
+      </div>
+      <div class="study-overview__row" data-reveal>
+        <h3 data-en="TASKS">ЗАДАЧИ</h3>
+        <ul><li data-en="Design a clear navigation model for exploring two universities in one space.">Спроектировать понятную навигационную модель для взаимодействия с двумя университетами в одном пространстве.</li><li data-en="Organize a complex educational structure of campuses, faculties, and programs into clear information architecture.">Упаковать сложную образовательную структуру (кампусы, факультеты, программы) в понятную информационную архитектуру.</li><li data-en="Make the touch interface quick to learn without training.">Обеспечить быстрое освоение интерфейса без обучения на touch-устройстве.</li></ul>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-content">
+      <p class="study-eyebrow" data-reveal data-en="PROBLEM RESEARCH">ИССЛЕДОВАНИЕ ПРОБЛЕМЫ</p>
+      <h2 id="study-content" data-reveal data-en="CONTENT ANALYSIS">КОНТЕНТ-АНАЛИЗ</h2>
+      <p class="study-lead" data-reveal data-en="I started by identifying the entities that needed to appear in the system.">На старте был определён набор сущностей, которые должны отображаться внутри системы.</p>
+      <div class="study-analysis">
+        <article class="study-panel study-analysis__card" data-tone="blue" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-blue.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="MSU">МГУ</h3><p data-en="Moscow State University, one of Russia’s leading universities.">Московский государственный университет, один из ведущих вузов России.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="red" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-red.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="Xiamen">Сямэнь</h3><p data-en="A major Chinese university with a strong research base.">Крупный китайский университет с сильной научной базой.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="gold" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-gold.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="Campuses">Кампусы</h3><p data-en="University grounds with academic and administrative buildings.">Территории университета с учебными и административными зданиями.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="cyan" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-cyan.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="Faculties">Факультеты</h3><p data-en="The main academic divisions of each university.">Основные учебные подразделения университета.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="orange" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-orange.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="University overviews">Описание университетов</h3><p data-en="General information about each university, its distinctive features, and its role in education.">Краткая общая информация об университете, его особенностях и роли в образовательной среде.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="violet" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-violet.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="Programs">Программы</h3><p data-en="Accelerator programs, student projects, and startups looking to grow and find partners.">Акселерационные программы, студенческие проекты и стартапы для развития и поиска партнёров.</p></article>
+        <article class="study-panel study-analysis__card" data-tone="green" data-reveal><span class="study-analysis__icon"><img src="../../assets/cases/msu-xiamen/topic-green.svg" width="40" height="40" alt="" loading="lazy" decoding="async"></span><h3 data-en="Cooperation">Сотрудничество</h3><p data-en="International cooperation between Russia and China in education, research, and joint projects.">Развитие международных отношений России и Китая в сфере образования, науки и совместных проектов.</p></article>
+      </div>
+      <p class="study-after" data-reveal data-en="The goal was to define a clear way to interact with these entities within the 3D space.">Задача состояла не в создании каталога информации, а в построении логичной структуры взаимодействия с этими сущностями.</p>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-architecture">
+      <h2 id="study-architecture" data-reveal data-en="INFORMATION ARCHITECTURE">ИНФОРМАЦИОННАЯ АРХИТЕКТУРА</h2>
+      <p class="study-lead" data-reveal data-en="The content analysis informed a product structure aimed at reducing navigation depth and the number of steps.">После анализа контента была сформирована структура продукта. Цель — минимизировать глубину навигации и сократить количество переходов.</p>
+      <figure class="study-panel study-diagram study-diagram--architecture" data-reveal>
+        <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/architecture.webp" width="2100" height="1281" alt="" loading="lazy" decoding="async">
+        <figcaption class="study-diagram__transcript">
+          <p data-en="Three branches lead from the home screen:">От главного экрана отходят три ветки:</p>
+          <ul>
+            <li data-en="University overview → MSU, Xiamen, or international cooperation → section content.">Описание университета → МГУ, Сямэнь или международное сотрудничество → контент раздела.</li>
+            <li data-en="Campus navigation → choose a university → open its card or use a marker in the 3D scene → campus card with an overview, infrastructure, and faculties.">Навигация по кампусам → выбор университета → карточка университета или маркеры на сцене → карточка кампуса с общей информацией, инфраструктурой и факультетами.</li>
+            <li data-en="Programs → overview or MSU programs → program grid → program card.">Программы → описание или программы МГУ → плитка программ → карточка программы.</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-cjm">
+      <h2 id="study-cjm" data-reveal>CJM</h2>
+      <p class="study-lead" data-reveal data-en="I mapped the key stages of the experience to identify potential usability problems.">Для выявления потенциальных проблем была построена упрощённая карта опыта.</p>
+      <figure class="study-table__preview" data-reveal>
+        <img src="../../assets/cases/msu-xiamen/cjm-ru.webp" data-en-src="../../assets/cases/msu-xiamen/cjm-en.webp"
+          width="2330" height="1419" alt="Таблица CJM" data-en-alt="Customer journey map" loading="lazy" decoding="async">
+      </figure>
+      <div class="study-table--research study-table--journey" role="region" aria-labelledby="study-cjm">
+        <table role="table">
+          <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader"><span data-en="Stage">Этап</span></th><th scope="col" role="columnheader"><span data-en="User action">Действие пользователя</span></th><th scope="col" role="columnheader"><span data-en="User goal">Цель пользователя</span></th><th scope="col" role="columnheader"><span data-en="User thoughts">Мысли пользователя</span></th><th scope="col" role="columnheader"><span data-en="Problem or risk">Проблема / риск</span></th><th scope="col" role="columnheader"><span data-en="Potential UX solution">Возможное UX-решение</span></th></tr></thead>
+          <tbody role="rowgroup">
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">1</span><span data-en="First contact">Первый контакт</span></span></th><td role="cell"><span class="study-table__value" data-en="Gets to know the product">Знакомится с продуктом</span></td><td role="cell"><span class="study-table__value" data-en="Understand the purpose">Понять назначение</span></td><td role="cell"><span class="study-table__value" data-en="“What is this project?”">«Что это за проект?»</span></td><td role="cell"><span class="study-table__value" data-en="Unclear context">Неочевидный контекст</span></td><td role="cell"><span class="study-table__value" data-en="Start screen with a brief explanation and a call to action">Стартовый экран с кратким объяснением и CTA</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">2</span><span data-en="Start exploring">Начало исследования</span></span></th><td role="cell"><span class="study-table__value" data-en="Starts interacting">Начинает взаимодействие</span></td><td role="cell"><span class="study-table__value" data-en="Figure out where to start">Понять, с чего начать</span></td><td role="cell"><span class="study-table__value" data-en="“What can I look at?”">«Что можно посмотреть?»</span></td><td role="cell"><span class="study-table__value" data-en="No obvious entry point">Нет очевидной точки входа</span></td><td role="cell"><span class="study-table__value" data-en="Persistent navigation">Постоянная UI-навигация</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">3</span><span data-en="Select a section">Выбор раздела</span></span></th><td role="cell"><span class="study-table__value" data-en="Chooses a university or section">Выбирает университет или раздел</span></td><td role="cell"><span class="study-table__value" data-en="Start exploring">Начать исследование</span></td><td role="cell"><span class="study-table__value" data-en="“Where should I start?”">«С чего лучше начать?»</span></td><td role="cell"><span class="study-table__value" data-en="Structure is difficult to understand">Сложно понять структуру</span></td><td role="cell"><span class="study-table__value" data-en="Clear information architecture and university and section switches">Логичная IA и тумблер университетов, разделов</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">4</span><span data-en="Explore sections">Изучение разделов</span></span></th><td role="cell"><span class="study-table__value" data-en="Explores campuses, faculties, and programs">Исследует кампусы, факультеты и программы</span></td><td role="cell"><span class="study-table__value" data-en="Find relevant information">Найти нужную информацию</span></td><td role="cell"><span class="study-table__value" data-en="“Where is the section I need?”">«Где находится нужный раздел?»</span></td><td role="cell"><span class="study-table__value" data-en="Overloaded structure">Перегруженная структура</span></td><td role="cell"><span class="study-table__value" data-en="Simple navigation and consistent patterns">Простая навигация и единые паттерны</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">5</span><span data-en="View an object">Просмотр объекта</span></span></th><td role="cell"><span class="study-table__value" data-en="Opens an object card">Открывает карточку объекта</span></td><td role="cell"><span class="study-table__value" data-en="Get information quickly">Быстро получить информацию</span></td><td role="cell"><span class="study-table__value" data-en="“Now it makes sense.”">«Теперь всё понятно.»</span></td><td role="cell"><span class="study-table__value" data-en="Too much text">Избыточный объём текста</span></td><td role="cell"><span class="study-table__value" data-en="Compact cards with a consistent structure">Компактные карточки с единой структурой</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">6</span><span data-en="Continue exploring">Продолжение исследования</span></span></th><td role="cell"><span class="study-table__value" data-en="Moves between sections">Переходит между разделами</span></td><td role="cell"><span class="study-table__value" data-en="Keep track of context">Не потерять контекст</span></td><td role="cell"><span class="study-table__value" data-en="“What else can I explore?”">«Что ещё можно изучить?»</span></td><td role="cell"><span class="study-table__value" data-en="Losing their bearings">Потеря ориентации в системе</span></td><td role="cell"><span class="study-table__value" data-en="Continuous access to navigation">Постоянный доступ к навигации</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">7</span><span data-en="Finish">Завершение</span></span></th><td role="cell"><span class="study-table__value" data-en="Finishes exploring">Заканчивает исследование</span></td><td role="cell"><span class="study-table__value" data-en="Form an overall understanding">Сформировать общее представление</span></td><td role="cell"><span class="study-table__value" data-en="“Now I understand how the project is organized.”">«Теперь я понимаю устройство проекта.»</span></td><td role="cell"><span class="study-table__value" data-en="No clear sense of completion">Нет ощущения завершённости</span></td><td role="cell"><span class="study-table__value" data-en="A quick way to return to the overview">Возможность быстро вернуться к обзору</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="study-panel study-insight" data-reveal>
+        <h3 data-en="Insights">Инсайты</h3>
+        <ul>
+          <li data-en="Users may switch between several sections while exploring, so consistent access to navigation can help them retain context.">Во время исследования пользователь потенциально переключается между несколькими разделами, поэтому доступ к навигации может быть критически важен для сохранения контекста.</li>
+          <li data-en="Campuses, faculties, programs, and cooperation can feel disconnected if each is presented differently.">Разные типы контента (кампусы, факультеты, программы, сотрудничество) могут восприниматься как несвязанные сущности, если для них используется разная логика отображения.</li>
+          <li data-en="If information is too many steps away, users can spend more time searching than exploring the content.">Если путь к информации окажется слишком длинным, пользователь может тратить больше времени на поиск нужного раздела, чем на изучение самого контента.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-hypotheses">
+      <h2 id="study-hypotheses" data-reveal data-en="HYPOTHESES">ГИПОТЕЗЫ</h2>
+      <div class="study-stack">
+        <article class="study-panel study-insight study-hypothesis" data-reveal><h3 data-en="Hypothesis 1">Гипотеза №1</h3><p data-en="If users have constant access to the main sections, they can switch between exploration scenarios more quickly and lose their context less often.">Если пользователь будет иметь постоянный доступ к основным разделам системы, он сможет быстрее переключаться между сценариями исследования и реже терять контекст внутри виртуального пространства.</p></article>
+        <article class="study-panel study-insight study-hypothesis" data-reveal><h3 data-en="Hypothesis 2">Гипотеза №2</h3><p data-en="If information about different objects is presented in a consistent format, users can find what they need faster and spend less time adjusting to unfamiliar sections.">Если информация о различных объектах будет представлена в едином формате, пользователи смогут быстрее находить нужные данные и тратить меньше времени на адаптацию к новым разделам.</p></article>
+        <article class="study-panel study-insight study-hypothesis" data-reveal><h3 data-en="Hypothesis 3">Гипотеза №3</h3><p data-en="If users can reach key content within two or three actions, they will be less likely to lose their bearings and find the space easier to explore.">Если пользователь сможет достигать ключевого контента не более чем за 2–3 действия, это снизит вероятность потери ориентации и упростит исследование пространства.</p></article>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-principles">
+      <h2 id="study-principles" data-reveal data-en="DESIGN PRINCIPLES">ПРИНЦИПЫ ПРОЕКТИРОВАНИЯ</h2>
+      <div class="study-principles">
+        <article class="study-panel study-principle" data-reveal><img src="../../assets/cases/msu-xiamen/principle-ui.webp" width="460" height="460" alt="" data-en-alt="" loading="lazy" decoding="async"><h3 data-en="Minimal UI">Минимум UI</h3><span class="study-principle__index" aria-hidden="true">01</span></article>
+        <article class="study-panel study-principle" data-reveal><img src="../../assets/cases/msu-xiamen/principle-path.webp" width="460" height="460" alt="" data-en-alt="" loading="lazy" decoding="async"><h3 data-en="Short flows">Короткие сценарии</h3><span class="study-principle__index" aria-hidden="true">02</span></article>
+        <article class="study-panel study-principle" data-reveal><img src="../../assets/cases/msu-xiamen/principle-patterns.webp" width="460" height="460" alt="" data-en-alt="" loading="lazy" decoding="async"><h3 data-en="Consistent patterns">Единые паттерны</h3><span class="study-principle__index" aria-hidden="true">03</span></article>
+        <article class="study-panel study-principle" data-reveal><img src="../../assets/cases/msu-xiamen/principle-touch.webp" width="460" height="460" alt="" data-en-alt="" loading="lazy" decoding="async"><h3 data-en="Touch-first">Touch-first</h3><span class="study-principle__index" aria-hidden="true">04</span></article>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-flow">
+      <h2 id="study-flow" data-reveal>USER FLOW</h2>
+      <div class="study-panel study-diagram study-diagram--flow">
+        <figure class="study-flow" data-reveal>
+          <figcaption class="study-flow__title" data-en="Scenario 1 — Finding university information">Сценарий №1 — Поиск информации об университете</figcaption>
+          <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/flow-1.webp" width="1920" height="383" alt="Главный экран → описание университета → выбор раздела. МГУ, Сямэнь или международное сотрудничество ведут к просмотру информации." data-en-alt="Home → university overview → section selection. MSU, Xiamen, or international cooperation lead to the information view." loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-flow" data-reveal>
+          <figcaption class="study-flow__title" data-en="Scenario 2 — Exploring a campus">Сценарий №2 — Изучение кампуса</figcaption>
+          <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/flow-2.webp" width="1920" height="489" alt="Главный экран → навигация по кампусам → выбор университета → карточка университета → список кампусов → выбор и карточка кампуса." data-en-alt="Home → campus navigation → select a university → university card → campus list → select and open a campus card." loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-flow" data-reveal>
+          <figcaption class="study-flow__title" data-en="Scenario 3 — Navigating with markers">Сценарий №3 — Навигация через маркеры</figcaption>
+          <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/flow-3.webp" width="1920" height="422" alt="Главный экран → навигация по кампусам → выбор университета → сцена с маркерами. Нажатие на маркер открывает карточку кампуса." data-en-alt="Home → campus navigation → select a university → scene with markers. Selecting a marker opens the campus card." loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-flow" data-reveal>
+          <figcaption class="study-flow__title" data-en="Scenario 4 — Exploring a faculty">Сценарий №4 — Изучение факультета</figcaption>
+          <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/flow-4.webp" width="1920" height="643" alt="Главный экран → навигация по кампусам → выбор университета → список кампусов → карточка кампуса → факультеты → выбор и информация о факультете." data-en-alt="Home → campus navigation → select a university → campus list → campus card → faculties → select a faculty and view its information." loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-flow" data-reveal>
+          <figcaption class="study-flow__title" data-en="Scenario 5 — Viewing programs">Сценарий №5 — Просмотр программ</figcaption>
+          <img class="study-diagram__image" src="../../assets/cases/msu-xiamen/flow-5.webp" width="1920" height="424" alt="Главный экран → программы → выбор раздела. Можно открыть описание или найти программу в плитке и открыть её карточку." data-en-alt="Home → programs → section selection. Users can view the overview or choose a program from the grid and open its card." loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-solutions">
+      <h2 id="study-solutions" data-reveal data-en="FINAL UX/UI SOLUTIONS">ФИНАЛЬНЫЕ UX/UI РЕШЕНИЯ</h2>
+      <div class="study-solutions">
+        <figure class="study-solution" data-reveal>
+          <figcaption><h3 data-en="Solution 1">Решение №1</h3><p data-en="Navigation panel">Навигационная панель</p></figcaption>
+          <img src="../../assets/cases/msu-xiamen/solution-navigation-full.webp"
+          srcset="../../assets/cases/msu-xiamen/solution-navigation-v2-480.webp 480w, ../../assets/cases/msu-xiamen/solution-navigation-v2-840.webp 840w, ../../assets/cases/msu-xiamen/solution-navigation-v2-1440.webp 1440w"
+          sizes="(max-width: 600px) 90vw, (max-width: 870px) 46vw, (max-width: 1000px) 395px, (max-width: 1526px) 43.25vw, 652px"
+          width="3840" height="2160" alt="Основная панель навигации на фоне 3D-кампуса" data-en-alt="Main navigation panel over the 3D campus" loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-solution" data-reveal>
+          <figcaption><h3 data-en="Solution 2">Решение №2</h3><p data-en="Switching universities">Переключение университетов</p></figcaption>
+          <img src="../../assets/cases/msu-xiamen/solution-universities-full.webp"
+          srcset="../../assets/cases/msu-xiamen/solution-universities-v2-480.webp 480w, ../../assets/cases/msu-xiamen/solution-universities-v2-840.webp 840w, ../../assets/cases/msu-xiamen/solution-universities-v2-1440.webp 1440w"
+          sizes="(max-width: 600px) 90vw, (max-width: 870px) 46vw, (max-width: 1000px) 395px, (max-width: 1526px) 43.25vw, 652px"
+          width="3840" height="2160" alt="Переключатель университетов и карточка МГУ" data-en-alt="University switcher and the MSU overview card" loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-solution" data-reveal>
+          <figcaption><h3 data-en="Solution 3">Решение №3</h3><p data-en="Campus and faculty cards">Карточки кампусов и факультетов</p></figcaption>
+          <img src="../../assets/cases/msu-xiamen/solution-campuses-full.webp"
+          srcset="../../assets/cases/msu-xiamen/solution-campuses-v2-480.webp 480w, ../../assets/cases/msu-xiamen/solution-campuses-v2-840.webp 840w, ../../assets/cases/msu-xiamen/solution-campuses-v2-1440.webp 1440w"
+          sizes="(max-width: 600px) 90vw, (max-width: 870px) 46vw, (max-width: 1000px) 395px, (max-width: 1526px) 43.25vw, 652px"
+          width="3840" height="2160" alt="Карточка кампуса МГУ с информацией об объектах и факультетах" data-en-alt="MSU campus card with landmark and faculty information" loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-solution" data-reveal>
+          <figcaption><h3 data-en="Solution 4">Решение №4</h3><p data-en="Programs section">Раздел программ</p></figcaption>
+          <img src="../../assets/cases/msu-xiamen/solution-programs-full.webp"
+          srcset="../../assets/cases/msu-xiamen/solution-programs-v2-480.webp 480w, ../../assets/cases/msu-xiamen/solution-programs-v2-840.webp 840w, ../../assets/cases/msu-xiamen/solution-programs-v2-1440.webp 1440w"
+          sizes="(max-width: 600px) 90vw, (max-width: 870px) 46vw, (max-width: 1000px) 395px, (max-width: 1526px) 43.25vw, 652px"
+          width="3840" height="2160" alt="Витрина проектов акселерационных программ" data-en-alt="Project showcase for the accelerator programs" loading="lazy" decoding="async">
+        </figure>
+        <figure class="study-solution study-solution--wide" data-reveal>
+          <figcaption><h3 data-en="Solution 5">Решение №5</h3><p data-en="Cooperation section">Раздел сотрудничества</p></figcaption>
+          <img src="../../assets/cases/msu-xiamen/solution-cooperation-full.webp"
+          srcset="../../assets/cases/msu-xiamen/solution-cooperation-v2-660.webp 660w, ../../assets/cases/msu-xiamen/solution-cooperation-v2-1320.webp 1320w, ../../assets/cases/msu-xiamen/solution-cooperation-v2-1980.webp 1980w"
+          sizes="(max-width: 600px) 90vw, (max-width: 870px) 92vw, (max-width: 1000px) 800px, (max-width: 1526px) 86.5vw, 1320px"
+          width="3840" height="2160" alt="Экран международного сотрудничества с историческими вехами и информацией об университете" data-en-alt="International cooperation screen with milestones and university information" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-kit">
+      <h2 id="study-kit" data-reveal>UI KIT</h2>
+      <div class="study-stack">
+        <figure class="study-board" data-reveal><img src="../../assets/cases/msu-xiamen/kit-palette.webp" width="1561" height="144" alt="Цветовая палитра интерфейса с белым, голубым градиентом и чёрным" data-en-alt="Interface color palette with white, a blue gradient, and black" loading="lazy" decoding="async"></figure>
+        <div class="study-kit-grid"><figure class="study-board" data-reveal><img src="../../assets/cases/msu-xiamen/kit-type.webp" width="1100" height="393" alt="Типографика Montserrat и используемые начертания" data-en-alt="Montserrat typography and font weights" loading="lazy" decoding="async"></figure><figure class="study-board" data-reveal><img src="../../assets/cases/msu-xiamen/kit-icons.webp" width="540" height="393" alt="Набор навигационных и информационных иконок" data-en-alt="Navigation and informational icon set" loading="lazy" decoding="async"></figure></div>
+        <figure class="study-board" data-reveal><img src="../../assets/cases/msu-xiamen/kit-components.webp" width="1660" height="979" alt="Компоненты интерфейса: карточки, теги, переключатели и информационные блоки" data-en-alt="Interface components including cards, tags, switches, and information panels" loading="lazy" decoding="async"></figure>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-testing">
+      <p class="study-eyebrow" data-reveal data-en="VALIDATING SOLUTIONS">ПРОВЕРКА РЕШЕНИЙ</p>
+      <h2 id="study-testing" data-reveal>USABILITY TESTING</h2>
+      <div class="study-overview study-testing__overview">
+        <div class="study-overview__row" data-reveal>
+          <h3 data-en="GOAL">ЦЕЛЬ</h3>
+          <p data-en="Assess how well users understood the interface and whether they could find the main sections on their first attempt, without prompts.">Проверить, насколько пользователи понимают структуру интерфейса и могут с первой попытки находить ключевые разделы продукта без подсказок.</p>
+        </div>
+        <div class="study-overview__row" data-reveal>
+          <h3 data-en="METHOD">МЕТОДИКА</h3>
+          <div class="study-rich"><p data-en="Five users who had never used the project took part in the study.">В исследовании приняли участие 5 пользователей, ранее не знакомых с проектом.</p><p data-en="Each participant completed four scenarios in sequence without prompts.">Каждый участник последовательно выполнял четыре сценария без подсказок.</p><p data-en="The following observations were recorded during the study.">Во время тестирования фиксировались следующие данные.</p><ul><li data-en="The first click">Первый клик пользователя</li><li data-en="Task success">Успешность выполнения задачи</li><li data-en="Time to the first correct action">Время до первого правильного действия</li><li data-en="The number of incorrect navigation steps">Количество ошибочных переходов</li><li data-en="User comments and points of difficulty">Комментарии пользователей и возникающие затруднения</li></ul></div>
+        </div>
+        <div class="study-overview__row" data-reveal>
+          <h3 data-en="SCENARIOS">СЦЕНАРИИ</h3>
+          <ol><li data-en="Find the MSU faculties section.">Найдите раздел факультетов МГУ.</li><li data-en="Find the accelerator programs.">Найдите акселерационные программы.</li><li data-en="Find the international cooperation section.">Найдите раздел международного сотрудничества.</li><li data-en="Switch to the Xiamen University card.">Переключитесь на карточку университета Сямэня.</li></ol>
+        </div>
+      </div>
+      <figure class="study-table__preview" data-reveal>
+        <img src="../../assets/cases/msu-xiamen/usability-testing-ru.webp" data-en-src="../../assets/cases/msu-xiamen/usability-testing-en.webp"
+          width="2328" height="987" alt="Таблица результатов юзабилити-тестирования" data-en-alt="Usability testing results table" loading="lazy" decoding="async">
+      </figure>
+      <div class="study-table--research study-table--testing" role="region" aria-labelledby="study-testing">
+        <table role="table">
+          <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader"><span data-en="Task">Задача</span></th><th scope="col" role="columnheader"><span data-en="Success">Успешность</span></th><th scope="col" role="columnheader"><span data-en="Mean time">Среднее время</span></th><th scope="col" role="columnheader"><span data-en="Observations">Наблюдения</span></th></tr></thead>
+          <tbody role="rowgroup">
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">1</span><span data-en="Find the MSU faculties section.">Найдите раздел факультетов МГУ.</span></span></th><td role="cell"><span class="study-table__value" data-en="5 of 5 (100%)">5 из 5 (100%)</span></td><td role="cell"><span class="study-table__value" data-en="7.2 s">7,2 сек</span></td><td role="cell" class="study-table__empty"><span class="study-table__value" data-en="—">—</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">2</span><span data-en="Find the accelerator programs.">Найдите акселерационные программы.</span></span></th><td role="cell"><span class="study-table__value" data-en="4 of 5 (80%)">4 из 5 (80%)</span></td><td role="cell"><span class="study-table__value" data-en="5.4 s">5,4 сек</span></td><td role="cell"><span class="study-table__value" data-en="One user expected to find the programs within the university section">Один пользователь ожидал найти программы внутри университета</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">3</span><span data-en="Find the international cooperation section.">Найдите раздел международного сотрудничества.</span></span></th><td role="cell"><span class="study-table__value" data-en="5 of 5 (100%)">5 из 5 (100%)</span></td><td role="cell"><span class="study-table__value" data-en="7.8 s">7,8 сек</span></td><td role="cell" class="study-table__empty"><span class="study-table__value" data-en="—">—</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span class="study-table__step"><span class="study-table__ordinal" aria-hidden="true">4</span><span data-en="Switch to the Xiamen University card.">Переключитесь на карточку университета Сямэня.</span></span></th><td role="cell"><span class="study-table__value" data-en="5 of 5 (100%)">5 из 5 (100%)</span></td><td role="cell"><span class="study-table__value" data-en="4.6 s">4,6 сек</span></td><td role="cell" class="study-table__empty"><span class="study-table__value" data-en="—">—</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="study-panel study-insight" data-reveal>
+        <h3 data-en="Findings">Выводы</h3>
+        <ul>
+          <li data-en="Testing confirmed that users understood the basic navigation model and could complete the main scenarios without instruction.">По итогам тестирования удалось подтвердить, что базовая навигационная модель понятна пользователям и позволяет успешно выполнять основные сценарии без дополнительного обучения.</li>
+          <li data-en="Finding the accelerator programs caused the most difficulty. Some participants expected that content within a university’s structure rather than in a standalone section. This finding informed refinements to the information architecture and visual hierarchy.">Наибольшие затруднения возникли при поиске раздела акселерационных программ: часть участников ожидала увидеть его внутри структуры университета, а не как самостоятельный раздел. Это наблюдение позволило уточнить информационную архитектуру и скорректировать визуальные акценты интерфейса.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-metrics">
+      <h2 id="study-metrics" data-reveal data-en="UX METRICS">UX-МЕТРИКИ</h2>
+      <p class="study-lead" data-reveal data-en="I calculated three core UX metrics after participants completed the scenarios.">После прохождения сценариев были рассчитаны три базовые UX-метрики.</p>
+      <div class="study-metrics">
+        <article class="study-panel study-metric" data-reveal><strong data-en="95%">95%</strong><h3>Task Success Rate</h3><p data-en="19 of 20 scenarios were completed successfully">19 из 20 сценариев выполнены успешно</p></article>
+        <article class="study-panel study-metric" data-reveal><strong><span data-en="≈ 6.8">≈ 6,8</span> <small data-en="s">сек</small></strong><h3>Time on Task</h3><p data-en="Average time to complete a scenario">Среднее время выполнения пользовательского сценария</p></article>
+        <article class="study-panel study-metric" data-reveal><strong data-en="0.35">0,35</strong><h3>Error Rate</h3><p data-en="Average number of incorrect actions before reaching the goal">Среднее количество ошибочных действий до достижения цели</p></article>
+      </div>
+      <h3 class="study-subtitle" data-reveal data-en="WHAT CHANGED">ЧТО ИЗМЕНИЛОСЬ</h3>
+      <div class="study-panel study-table study-table--changes" role="region" aria-label="Сравнение изменений" data-en-label="Comparison of changes" data-reveal>
+        <table role="table">
+          <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader"><span data-en="Observation">Наблюдение</span></th><th scope="col" role="columnheader"><span data-en="Change">Изменение</span></th></tr></thead>
+          <tbody role="rowgroup">
+          <tr role="row"><th scope="row" role="rowheader"><span data-en="Users expected to find programs within the university">Пользователи ожидали найти программы внутри университета</span></th><td role="cell"><span data-en="Made the standalone Programs section more visually prominent">Усилен визуальный акцент самостоятельного раздела «Программы»</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span data-en="Users spent longer finding the cooperation section">Пользователи тратили больше времени на поиск сотрудничества</span></th><td role="cell"><span data-en="Reordered sections in the navigation panel">Изменён порядок разделов в панели навигации</span></td></tr>
+          <tr role="row"><th scope="row" role="rowheader"><span data-en="After opening a card, some users looked for a way back">После открытия карточки часть пользователей искала способ вернуться</span></th><td role="cell"><span data-en="Added a more prominent back button">Добавлена более заметная кнопка возврата</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-results">
+      <h2 id="study-results" data-reveal data-en="RESULTS">РЕЗУЛЬТАТЫ</h2>
+      <div class="study-stack study-results">
+        <div class="study-result-card" data-reveal>
+          <span class="study-result-state"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Confirmed">Подтвердилась</span></span>
+          <article class="study-panel study-result">
+            <div class="study-result__hypothesis"><h3 data-en="Hypothesis 1">Гипотеза №1</h3><p data-en="If users have constant access to the main sections, they can switch between exploration scenarios more quickly and lose their context less often.">Если пользователь будет иметь постоянный доступ к основным разделам системы, он сможет быстрее переключаться между сценариями исследования и реже терять контекст внутри виртуального пространства.</p></div>
+            <div class="study-result__details"><h4 data-en="What the tests showed">Что показали тесты</h4><ul><li data-en="Users confidently relied on the sidebar as their main navigation tool.">Пользователи уверенно использовали боковую панель как основной навигационный инструмент.</li><li data-en="Users moved between sections without significant delays.">Переходы между разделами выполнялись без значительных задержек.</li><li data-en="Users lost their context less often than in alternative scenarios without fixed navigation.">Потеря контекста возникала реже по сравнению с альтернативными сценариями без фиксированной навигации.</li></ul><h4 data-en="Conclusion">Вывод</h4><p data-en="A persistent navigation panel is critical for maintaining context in spatial interfaces.">Постоянная навигационная панель критически важна для удержания контекста в пространственных интерфейсах.</p></div>
+          </article>
+        </div>
+        <div class="study-result-card" data-reveal>
+          <span class="study-result-state"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Confirmed">Подтвердилась</span></span>
+          <article class="study-panel study-result">
+            <div class="study-result__hypothesis"><h3 data-en="Hypothesis 2">Гипотеза №2</h3><p data-en="If information about different objects is presented in a consistent format, users can find what they need faster and spend less time adjusting to unfamiliar sections.">Если информация о различных объектах будет представлена в едином формате, пользователи смогут быстрее находить нужные данные и тратить меньше времени на адаптацию к новым разделам.</p></div>
+            <div class="study-result__details"><h4 data-en="What the tests showed">Что показали тесты</h4><ul><li data-en="Users understood the card structure faster after the first interaction.">Пользователи быстрее понимали структуру карточек после первого взаимодействия.</li><li data-en="Users took fewer exploratory actions after opening different types of objects.">Снижение количества уточняющих действий при открытии разных типов объектов.</li><li data-en="Users got up to speed faster with new content types.">Уменьшение времени «вхождения» в новый тип контента.</li></ul><h4 data-en="Conclusion">Вывод</h4><p data-en="A consistent card structure makes the interface more predictable and reduces cognitive load.">Единая структура карточек повышает предсказуемость интерфейса и снижает когнитивную нагрузку.</p></div>
+          </article>
+        </div>
+        <div class="study-result-card" data-reveal>
+          <span class="study-result-state"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Confirmed">Подтвердилась</span></span>
+          <article class="study-panel study-result">
+            <div class="study-result__hypothesis"><h3 data-en="Hypothesis 3">Гипотеза №3</h3><p data-en="If users can reach key content within two or three actions, they will be less likely to lose their bearings and find the space easier to explore.">Если пользователь сможет достигать ключевого контента не более чем за 2–3 действия, это снизит вероятность потери ориентации и упростит исследование пространства.</p></div>
+            <div class="study-result__details"><h4 data-en="What the tests showed">Что показали тесты</h4><ul><li data-en="Core flows (university → section → card) were consistently completed in two to three actions.">Базовые сценарии (университет → раздел → карточка) выполнялись стабильно в пределах 2–3 действий.</li><li data-en="Users reached key objects and sections without difficulty.">Пользователи без затруднений доходили до ключевых объектов и разделов.</li><li data-en="The navigation structure usually required no additional search steps.">Навигационная структура в большинстве случаев не требовала дополнительных шагов поиска.</li><li data-en="Users stayed oriented throughout each scenario.">Ориентация внутри системы сохранялась на протяжении всего сценария.</li></ul><h4 data-en="Conclusion">Вывод</h4><p data-en="Keeping navigation within two to three actions reduces disorientation and makes exploring the space more predictable and linear.">Ограничение глубины навигации до 2–3 действий эффективно снижает риск дезориентации и делает исследование пространства более предсказуемым и линейным для пользователя.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="study-section content-width" aria-labelledby="study-summary">
+      <h2 id="study-summary" data-reveal data-en="SUMMARY">ИТОГ</h2>
+      <aside class="study-panel study-insight" data-reveal>
+        <p data-en="I designed the UX/UI for an interactive space featuring digital twins of MSU and Xiamen University. The central challenge was to make the 3D environment easy to navigate with predictable interactions.">В рамках проекта я спроектировал UX/UI интерактивного пространства для цифровых двойников МГУ и Университета Сямэня, где ключевой задачей было превратить 3D-среду в понятную навигационную интерфейсную систему с предсказуемой логикой взаимодействия.</p><p data-en="I defined the information architecture and user scenarios, designed the navigation and UI components, and carried out UX research and hypothesis testing through first-click and usability tests. The findings refined section priorities and made the interface easier to read in the 3D environment.">Я выстроил информационную архитектуру, определил пользовательские сценарии, разработал навигационную модель и UI-компоненты, а также провёл UX-исследования и тестирование гипотез (First Click Test, usability testing), на основе которых были уточнены приоритеты разделов и улучшена читаемость интерфейса в пространственной среде.</p>
+      </aside>
+      <ul class="study-summary-gallery" role="list" data-reveal>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-1.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-1-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-1-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-1-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-1-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Стартовый экран проекта" data-en-alt="Project welcome screen" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-2.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-2-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-2-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-2-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-2-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Карта кампусов МГУ и Сямэня" data-en-alt="Map of the MSU and Xiamen campuses" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-3.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-3-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-3-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-3-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-3-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Карточка кампуса «Воробьёвы горы»" data-en-alt="Sparrow Hills campus card" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-4.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-4-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-4-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-4-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-4-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Экран об МГУ имени М. В. Ломоносова" data-en-alt="Lomonosov Moscow State University screen" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-5.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-5-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-5-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-5-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-5-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Экран о Сямэньском университете" data-en-alt="Xiamen University screen" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-6.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-6-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-6-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-6-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-6-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Раздел международного сотрудничества" data-en-alt="International cooperation section" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-7.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-7-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-7-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-7-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-7-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Экран «О проекте»" data-en-alt="About the project screen" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-8.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-8-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-8-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-8-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-8-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Каталог программ МГУ" data-en-alt="MSU program catalog" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li>
+          <a class="study-image-link" href="../../assets/cases/msu-xiamen/summary-screen-9.webp">
+            <img src="../../assets/cases/msu-xiamen/summary-screen-9-420.webp"
+              srcset="../../assets/cases/msu-xiamen/summary-screen-9-200.webp 200w, ../../assets/cases/msu-xiamen/summary-screen-9-420.webp 420w, ../../assets/cases/msu-xiamen/summary-screen-9-680.webp 680w"
+              sizes="(max-width: 600px) 24vw, (max-width: 870px) 24.5vw, (max-width: 1000px) 213px, (max-width: 1526px) 23vw, 352px"
+              width="2004" height="1109" alt="Экран проекта «НейроЛаб»" data-en-alt="NeuroLab project screen" loading="lazy" decoding="async">
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="content-width contacts-content">
+        <h2 id="contacts-title" data-reveal data-en="GET IN TOUCH">СВЯЗАТЬСЯ СО МНОЙ</h2>
+        <p data-reveal data-en="I’m open to new opportunities, interesting projects, and professional collaborations.">Открыт к новым возможностям, интересным проектам и профессиональному сотрудничеству.</p>
+        <ul class="contact-list">
+          <li class="contact-item" data-reveal>
+            <a href="https://t.me/Mysterious_Nomad" target="_blank" rel="noopener noreferrer">
+              <svg class="icon contact-icon"><use href="#i-telegram"></use></svg>
+              <span class="contact-label"><strong>Telegram</strong><span>@Mysterious_Nomad</span></span>
+              <span class="round-action"><svg class="icon"><use href="#i-arrow"></use></svg></span>
+            </a>
+          </li>
+          <li class="contact-item" data-reveal>
+            <a href="mailto:thekondratevkd@mail.ru">
+              <svg class="icon contact-icon"><use href="#i-mail"></use></svg>
+              <span class="contact-label"><strong data-en="Email">Почта</strong><span>thekondratevkd@mail.ru</span></span>
+              <span class="round-action"><svg class="icon"><use href="#i-arrow"></use></svg></span>
+            </a>
+          </li>
+          <li class="contact-item" data-reveal>
+            <a href="https://max.ru/u/f9LHodD0cOKSADttFcHFeKzM1Ka2nYdIQJRvT2RvdbTZITvwZOKoBgBet3U" target="_blank" rel="noopener noreferrer">
+              <svg class="icon contact-icon"><use href="#i-max"></use></svg>
+              <span class="contact-label"><strong>MAX</strong><span data-en="Andrey Kondratyev">Андрей Кондратьев</span></span>
+              <span class="round-action"><svg class="icon"><use href="#i-arrow"></use></svg></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="contacts-type" aria-hidden="true" data-en="CONTACT">КОНТАКТЫ</div>
+    </section>
+  </main>
+  <dialog class="study-viewer" aria-labelledby="study-viewer-title">
+    <div class="study-viewer__toolbar">
+      <h2 id="study-viewer-title"></h2>
+      <button class="control study-viewer__zoom" type="button" aria-pressed="false" aria-label="Увеличение" data-en-label="Zoom">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M5 12h14"/><path class="study-viewer__zoom-in" d="M12 5v14"/>
+        </svg>
+      </button>
+      <form method="dialog">
+        <button class="control study-viewer__close" autofocus aria-label="Закрыть просмотр" data-en-label="Close image viewer">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <div class="study-viewer__canvas" tabindex="0" role="region" aria-label="Область просмотра изображения" data-en-label="Image viewing area">
+      <img class="study-viewer__image" alt="">
+    </div>
+  </dialog>
+</body>
+</html>
